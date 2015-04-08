@@ -11,11 +11,52 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.11</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
-    <finalName>blogger</finalName>
-  </build>
+
+	<build>
+		<finalName>blogger</finalName>
+
+		<plugins>
+			<!-- Eclipse project -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<!-- Always download and attach dependencies source code -->
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<!-- Avoid type mvn eclipse:eclipse -Dwtpversion=2.0 -->
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
+
+			<!-- Set JDK Compiler Level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<!-- For Maven Tomcat Plugin -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/ehcacheSample</path>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>  
+  
+  
 </project>
