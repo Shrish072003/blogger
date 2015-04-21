@@ -14,12 +14,38 @@
 </style>
 </head>
 <body>
-<div id="header" class="center">欢迎！！！</div>
+<s:if test="%{#session['userName'] != null}">
+	欢迎：<s:property value="#session['userName']"/>
+</s:if>
+<s:else>
+	<s:url var="loginURL" namespace="/" action="login">
+	</s:url>	
+	<s:a href="%{loginURL}">
+		登陆
+	</s:a>
+</s:else>
 
 <div id="body" class="center">博客内容</div>
 
-<s:form action="Index">
-	<s:textfield name="name" label="name"/>
+<s:form action="index">
+	
+	<table border="1">
+		<tr>
+			<td>标题</td>
+			<td>内容</td>
+			<td>创建者</td>
+			<td>创建时间</td>
+		</tr>
+		<s:iterator value="bloggerList">
+			<tr>
+				<td><s:property value="title"/></td>
+				<td><s:property value="content"/></td>
+				<td><s:property value="creator"/></td>
+				<td><s:property value="lastUpdated"/></td>			
+			</tr>
+		</s:iterator>
+	</table>
+	
 </s:form>
 
 </body>

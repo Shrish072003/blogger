@@ -5,10 +5,14 @@
  
 <struts>
  
-	<package name="index" namespace="/" extends="struts-default">
+	<package name="baseIndex" namespace="/" extends="struts-default">
 		<action name="index" class="com.codinginaction.blogger.action.IndexPageAction">
 			<result name="SUCCESS">index.jsp</result>
 		</action>
+		
+		<action name="login" class="com.codinginaction.blogger.action.LoginAction">
+			<result name="SUCCESS">/WEB-INF/pages/compose.jsp</result>
+		</action>		
 	</package>
  
 </struts>
